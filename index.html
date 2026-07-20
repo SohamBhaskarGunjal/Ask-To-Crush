@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask Her Out</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #ffe5e5;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <button id="mute-btn" style="position: absolute; top: 20px; left: 20px; z-index: 1000; padding: 10px 15px; border: none; border-radius: 8px; background: rgba(255,255,255,0.8); cursor: pointer; font-size: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">🔊</button>
+
+  <!-- Continuous Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Load the main content inside an iframe so navigation doesn't stop the music -->
+  <iframe src="main.html" name="mainFrame"></iframe>
+
+  <script>
+    // Play music when the user clicks anywhere in the wrapper
+    document.body.addEventListener("click", function() {
+      const bgMusic = document.getElementById("bg-music");
+      if (bgMusic.paused) {
+        bgMusic.play();
+      }
+    });
+
+    // Also play music when the user clicks inside the iframe pages
+    window.addEventListener('message', function(e) {
+      if(e.data === 'play-music') {
+        const bgMusic = document.getElementById("bg-music");
+        if (bgMusic.paused) {
+          bgMusic.play();
+        }
+      }
+    });
+
+    // Mute button logic
+    const muteBtn = document.getElementById("mute-btn");
+    muteBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      const bgMusic = document.getElementById("bg-music");
+      bgMusic.muted = !bgMusic.muted;
+      muteBtn.textContent = bgMusic.muted ? "🔇" : "🔊";
+      if (bgMusic.paused && !bgMusic.muted) {
+        bgMusic.play().catch(() => {});
+      }
+    });
+  </script>
+</body>
+</html>

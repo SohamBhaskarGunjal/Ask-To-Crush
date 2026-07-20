@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- made by @techoverflows-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ask Her Out</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <button id="openProfileBtn" class="profile-btn">✨ Developer Profile</button>
+
+    <div class="container">
+      <div
+        class="tenor-gif-embed"
+        data-postid="22885016"
+        data-share-method="host"
+        data-aspect-ratio="1.04918"
+        data-width="100%"
+      >
+        <a href="https://tenor.com/view/manja-gif-22885016">Manja Sticker</a
+        >from
+        <a href="https://tenor.com/search/manja-stickers">Manja Stickers</a>
+      </div>
+      <script
+        type="text/javascript"
+        async
+        src="https://tenor.com/embed.js"
+      ></script>
+      <h1>DO you love me? 🤗</h1>
+      <p>~I'm all yours, Main sirf apka hun</p>
+
+      <div class="btn">
+        <a href="yes.html">Yes</a>
+        <a href="no1.html">No</a>
+      </div>
+    </div>
+
+    <!-- Developer Profile Modal -->
+    <div id="profileModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title">✨ DEVELOPER PROFILE</span>
+          <button id="closeProfileBtn" class="close-btn">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          <img src="https://github.com/SohamBhaskarGunjal.png" alt="Soham Bhaskar Gunjal" class="profile-img">
+          <h2 class="profile-name">Soham Bhaskar Gunjal</h2>
+          <p class="profile-title">💼 CREATIVE DEVELOPER & INTERACTION DESIGNER</p>
+          
+          <div class="profile-section">
+            <h3>BIOGRAPHY</h3>
+            <p>Passionate about pushing the boundaries of real-time web graphics, AI-assisted computer vision, and interactive spatial interfaces.</p>
+          </div>
+          
+          <div class="profile-section">
+            <h3>CONNECT & LINKS</h3>
+            <div class="links-grid">
+              <a href="https://www.linkedin.com/in/soham-gunjal-a49b75324/" target="_blank" class="social-link">🔗 LinkedIn</a>
+              <a href="https://github.com/SohamBhaskarGunjal" target="_blank" class="social-link">💻 GitHub</a>
+              <a href="https://www.instagram.com/_soham_0008_" target="_blank" class="social-link">📸 Instagram</a>
+              <a href="#" target="_blank" class="social-link full-width">🌐 Portfolio Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById("profileModal");
+      const btn = document.getElementById("openProfileBtn");
+      const span = document.getElementById("closeProfileBtn");
+
+      // Open the modal
+      btn.onclick = function() {
+        modal.style.display = "flex";
+      }
+
+      // Close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // Close when clicking outside of modal
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      // Tell the parent wrapper to play music (if not already playing) when the user clicks
+      document.body.addEventListener("click", function() {
+        window.parent.postMessage('play-music', '*');
+      }, { once: true });
+    </script>
+  </body>
+</html>
+
